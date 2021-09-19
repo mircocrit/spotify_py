@@ -9,8 +9,6 @@ auth_response = requests.post(AUTH_URL, data=command)
 
 auth_response_data = auth_response.json()
 access_token = auth_response_data['access_token']
-print (access_token)
-
 
 headers = {'Authorization': 'Bearer {token}'.format(token=access_token)}
 BASE_URL = 'https://api.spotify.com/v1/'
@@ -22,10 +20,8 @@ BASE_URL = 'https://api.spotify.com/v1/'
 #    print(album['name'], ' --- ', album['release_date'])
 
 artist_id= str(sys.argv[1])
-print(artist_id)
-
 params={'limit': 50}
 r = requests.get(BASE_URL + 'search?type=track&q=artist:' + artist_id, params=params, headers=headers)
 d = r.json()['tracks']
 for track in d['items']:
-    print(track['name'], track['popularity'])
+    print(track['name'] , '\t', track['popularity'])		#track['uri']
