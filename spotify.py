@@ -24,4 +24,4 @@ params={'limit': 50}
 r = requests.get(BASE_URL + 'search?type=track&q=artist:' + artist_id, params=params, headers=headers)
 d = r.json()['tracks']
 for track in d['items']:
-    print(track['name'] , '\t', track['popularity'])		#track['uri']
+    print(track['name'] , '\t\t', track['popularity'], '\t\t' , track['album']['name'], '\t\t', track['album']['release_date'])		#track['uri']
